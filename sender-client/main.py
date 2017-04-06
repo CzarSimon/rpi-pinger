@@ -1,13 +1,14 @@
 import requests
 import json
 import schedule
-import os
+import subprocess
 import time
 import config
 
 
 def get_ip():
-    return os.environ["REOMOTE_ADDR"]
+    addreses = subprocess.check_output(["hostname", "-I"])
+    return addreses.split(" ")[0]
 
 
 def send_ip(ip):
